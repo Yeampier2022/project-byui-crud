@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "https://project-byui-crud.onrender.com",
+  "host": "project-byui-crud.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
