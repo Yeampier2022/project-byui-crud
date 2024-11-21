@@ -16,6 +16,10 @@ const getEmployees = async (req, res) => {
 
 const getEmployeesId = async (req, res) => {
   // swagger.tags = ["Employess"];
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ error: "must use valid id employees" });
+    return;
+  }
   const id = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
@@ -23,6 +27,9 @@ const getEmployeesId = async (req, res) => {
     .collection("employees")
     .find({ _id: id });
   result.toArray().then((employees) => {
+    if (employees.error) {
+      res.status(400).json(employees.error);
+    }
     res.setHeader("Content-Type", "application/json");
     res.status(200).json(employees[0]);
   });
@@ -54,6 +61,10 @@ const createEmployees = async (req, res) => {
 
 const updateEmployees = async (req, res) => {
   // swagger.tags = ["Employess"];
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ error: "must use valid id employees" });
+    return;
+  }
   const id = new ObjectId(req.params.id);
   const employees = {
     name: req.body.name,
@@ -79,6 +90,10 @@ const updateEmployees = async (req, res) => {
 
 const deleteEmployees = async (req, res) => {
   // swagger.tags = ["Employess"];
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ error: "must use valid id employees" });
+    return;
+  } 
   const id = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
