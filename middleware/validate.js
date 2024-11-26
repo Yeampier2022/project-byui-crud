@@ -6,7 +6,7 @@ const saveEmployee = async (req, res, next) => {
     lastname: "required|string",
     age: "required|integer",
     email: "required|email",
-    department: "required|string",
+    departmen: "required|string",
   };
 
   validator(req.body, validateEmployee, {}, (err, status) => {
