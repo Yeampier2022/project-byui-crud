@@ -9,6 +9,8 @@ const saveEmployee = async (req, res, next) => {
     departmen: "required|string",
   };
 
+  // Validate the request
+
   validator(req.body, validateEmployee, {}, (err, status) => {
     if (!status) {
       res.status(400).json({
