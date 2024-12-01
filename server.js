@@ -65,7 +65,8 @@ app.get("/", (req, res) => {
 });
 
 app.get(
-  "/auth/github/callback",
+"https://project-byui-crud.onrender.com/auth/github/callback",
+  //"/auth/github/callback",
   passport.authenticate("github", {
     failureRedirect: "/api-doc",
     session: false,
