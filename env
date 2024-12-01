@@ -1,0 +1,4 @@
+MONGODB_URL = mongodb+srv://yeampierjesus:yeampier14@cluster0.yxdho.mongodb.net/project-crud
+GITHUB_CLIENT_ID = Ov23liX8PQbuCaml5Q5B
+GITHUB_CLIENT_SECRET = 1c63c1b10ffb5d5ba29bebe96ce783a63983632e
+GITHUB_CALLBACK_URL = http://localhost:3000/auth/github/callback
