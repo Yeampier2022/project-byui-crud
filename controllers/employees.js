@@ -42,7 +42,7 @@ const createEmployees = async (req, res) => {
     lastname: req.body.lastname,
     age: req.body.age,
     email: req.body.email,
-    deparment: req.body.deparment,
+    departmen: req.body.departmen,
   };
   const result = await mongodb
     .getDb()
@@ -51,12 +51,13 @@ const createEmployees = async (req, res) => {
     .insertOne(employees);
 
   if (result.acknowledged) {
-    res.status(204).send();
+    res.status(201).json(result);
   } else {
     res
       .status(500)
       .json(result.error || "An error occurred while creating the user.");
   }
+  res.status(500).json(result.error);
 };
 
 const updateEmployees = async (req, res) => {
@@ -71,7 +72,7 @@ const updateEmployees = async (req, res) => {
     lastname: req.body.lastname,
     age: req.body.age,
     email: req.body.email,
-    deparment: req.body.deparment,
+    departamen: req.body.departamen,
   };
   const result = await mongodb
     .getDb()
@@ -93,7 +94,7 @@ const deleteEmployees = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json({ error: "must use valid id employees" });
     return;
-  } 
+  }
   const id = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
